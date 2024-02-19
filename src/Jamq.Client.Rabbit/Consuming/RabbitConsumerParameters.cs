@@ -51,12 +51,16 @@ public class RabbitConsumerParameters
     /// <summary>
     /// DLX name
     /// </summary>
-    public string? DeadLetterExchange { get; init; }
+    public RabbitConsumerParameters? DeadLetterExchange { get; init; }
 
     /// <summary>
     /// Maximum amount of time the consumer is allowed to wait for message processing to end when subscription is cancelled
     /// </summary>
     public TimeSpan MaxProcessingAnticipation { get; init; } = TimeSpan.FromSeconds(30);
+
+    public IDictionary<string, object>? AdditionalQueueArguments { get; init; }
+
+    public IDictionary<string, object>? AdditionalExchangeArguments { get; init; }
 
     public RabbitConsumerParameters(
         string consumerTag,
